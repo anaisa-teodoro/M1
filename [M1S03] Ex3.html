@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[M1S03] Ex 03</title>
+  </head>
+  <body>
+    <script>
+      let nomeFuncionario = "João";
+      let setorFuncionario = "Financeiro";
+      let valorHora = 50; 
+      let horasTrabalhadas = 230; 
+
+      const horasNormais = 220;
+
+      let salario;
+
+      if (horasTrabalhadas > horasNormais) {
+        let horasExtras = horasTrabalhadas - horasNormais;
+        salario = horasNormais * valorHora + horasExtras * valorHora * 2;
+      } else {
+        salario = horasTrabalhadas * valorHora;
+      }
+
+      console.log(
+        `O salário de ${nomeFuncionario}, do setor ${setorFuncionario}, é de R$${salario}.`
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[M1S03] Ex 05</title>
+    <style>
+
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input, select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      #calcular {
+        background-color: #ff79c6;
+        color: white;
+        flex: 1;
+      }
+      #limpar {
+        background-color: #854268;
+        color: white;
+        flex: 1;
+      }
+      button:hover {
+        opacity: 0.9;
+      }
+      #resultado {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 4px;
+        background-color: #cac8c8;
+        border-left: 5px solid #ff79c6;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cálculo de Salário</h1>
+    
+    <div class="form-group">
+      <label for="nomeFuncionario">Nome do Funcionário:</label>
+      <input type="text" id="nomeFuncionario" placeholder="Digite o nome do funcionário">
+    </div>
+    
+    <div class="form-group">
+      <label for="setorFuncionario">Setor:</label>
+      <select id="setorFuncionario">
+        <option value="">Selecione o setor</option>
+        <option value="OP">Operacional (OP)</option>
+        <option value="AD">Administrativo (AD)</option>
+        <option value="GE">Gerência (GE)</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="valorHora">Valor da Hora (R$):</label>
+      <input type="number" id="valorHora" min="0" step="0.01" placeholder="Digite o valor da hora">
+    </div>
+    
+    <div class="form-group">
+      <label for="horasTrabalhadas">Horas Trabalhadas:</label>
+      <input type="number" id="horasTrabalhadas" min="0" step="0.5" placeholder="Digite as horas trabalhadas">
+    </div>
+    
+    <div class="buttons">
+      <button id="calcular" onclick="calcularSalario()">Calcular Salário</button>
+      <button id="limpar" onclick="limparFormulario()">Limpar</button>
+    </div>
+    
+    <div id="resultado"></div>
+    
+    <script>
+      const horasNormais = 220;
+
+      function calcularSalario() {
+        let nomeFuncionario = document.getElementById("nomeFuncionario").value;
+        let setorFuncionario = document.getElementById("setorFuncionario").value;
+        let valorHora = parseFloat(document.getElementById("valorHora").value);
+        let horasTrabalhadas = parseFloat(document.getElementById("horasTrabalhadas").value);
+        let resultadoElement = document.getElementById("resultado");
+        
+        if (!nomeFuncionario || !setorFuncionario || isNaN(valorHora) || isNaN(horasTrabalhadas)) {
+          resultadoElement.style.display = "block";
+          resultadoElement.style.borderLeftColor = "#854268";
+          resultadoElement.innerHTML = "Por favor, preencha todos os campos corretamente.";
+          return;
+        }
+
+        // Obter o salário base
+        let salarioBase = calcularSalarioBase(setorFuncionario, valorHora, horasTrabalhadas);
+
+        // Mostrar o resultado
+        let setorNome = {
+          "OP": "Operacional",
+          "AD": "Administrativo",
+          "GE": "Gerência"
+        };
+        
+        resultadoElement.style.display = "block";
+        resultadoElement.style.borderLeftColor = "#854268";
+        resultadoElement.innerHTML = `O salário de <strong>${nomeFuncionario}</strong>, do setor <strong>${setorNome[setorFuncionario]}</strong>, é de <strong>R$${salarioBase.toFixed(2)}</strong>.`;
+      }
+
+      function calcularSalarioBase(setor, valorHora, horasTrabalhadas) {
+        let salario;
+
+        if (setor === "OP") {
+       
+          salario = calcularSalarioPorHora(valorHora, horasTrabalhadas);
+        } else if (setor === "AD") {
+         
+          salario = calcularSalarioPorHora(valorHora, horasTrabalhadas) * 1.1;
+        } else if (setor === "GE") {
+         
+          salario = horasTrabalhadas * valorHora * 1.25;
+        } else {
+          salario = 0;
+        }
+
+        return salario;
+      }
+
+      function calcularSalarioPorHora(valorHora, horasTrabalhadas) {
+        if (horasTrabalhadas > horasNormais) {
+          let horasExtras = horasTrabalhadas - horasNormais;
+          return horasNormais * valorHora + horasExtras * valorHora * 2;
+        } else {
+          return horasTrabalhadas * valorHora;
+        }
+      }
+
+      function limparFormulario() {
+      
+        document.getElementById("nomeFuncionario").value = "";
+        document.getElementById("setorFuncionario").value = "";
+        document.getElementById("valorHora").value = "";
+        document.getElementById("horasTrabalhadas").value = "";
+        
+       
+        let resultadoElement = document.getElementById("resultado");
+        resultadoElement.style.display = "none";
+        resultadoElement.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

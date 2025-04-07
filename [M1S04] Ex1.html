@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[M1S04] Ex 01</title>
+  </head>
+  <body>
+    <script>
+      function contarPrimos(numero) {
+        if (numero < 2) {
+          return 0;
+        }
+
+        let contador = 0;
+
+        for (let i = 2; i <= numero; i++) {
+          if (ehPrimo(i)) {
+            contador++;
+          }
+        }
+
+        return contador;
+      }
+
+      function ehPrimo(num) {
+        if (num < 2) return false;
+
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      console.log(contarPrimos(10));
+      console.log(contarPrimos(20));
+      console.log(contarPrimos(1));
+    </script>
+  </body>
+</html>
