@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[M1S04] Ex 03</title>
+  </head>
+  <body>
+    <h1>Contador [Números Ímpares]</h1>
+    <label for="numero">Informe um número:</label>
+    <input type="number" id="numero" />
+    <button onclick="calcularImpares()">Resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+      function contarImpares(numero) {
+        let contador = 0;
+        for (let i = 1; i <= numero; i++) {
+          if (i % 2 !== 0) {
+            contador++;
+          }
+        }
+        return contador;
+      }
+
+      function calcularImpares() {
+        const numero = parseInt(document.getElementById("numero").value);
+        if (isNaN(numero) || numero < 0) {
+          document.getElementById("resultado").innerText =
+            "Por favor, insira um número inteiro positivo.";
+          return;
+        }
+        const quantidade = contarImpares(numero);
+        document.getElementById(
+          "resultado"
+        ).innerText = `A quantidade de números ímpares até ${numero} é: ${quantidade}`;
+      }
+    </script>
+  </body>
+</html>
