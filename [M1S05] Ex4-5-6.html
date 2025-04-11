@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 4,5 e 6</title>
+</head>
+<body>
+    <meta name="description" content="Exercício de HTML e CSS para criar uma tela de login simples.">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: auto;
+            background-color: #be759e;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(162, 65, 128, 0.1);
+            width: 300px;
+            border: 1px solid #c02e80;
+        }
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #c02e80;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #c02e80;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #c02e80;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #ff79c6;
+        }
+        .error {
+            color: #4c1233;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .table-container, .product-container, .binary-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="form-group">
+            <label for="usuario">Usuário</label>
+            <input type="text" id="usuario" placeholder="Digite seu usuário">
+        </div>
+        <div class="form-group">
+            <label for="setor">Setor</label>
+            <select id="setor">
+                <option value="Comercial">Comercial</option>
+                <option value="RH">RH</option>
+                <option value="TI">TI</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Digite sua senha">
+        </div>
+        <div class="form-group">
+            <button onclick="login()">Entrar</button>
+        </div>
+        <div id="mensagem" class="error"></div>
+    </div>
+
+    <div id="table-container" class="table-container hidden">
+        <button onclick="mostrarTabela()">Ver cargos e salários</button>
+        <table id="tabela" class="hidden">
+            <tr>
+                <th>Nome</th>
+                <th>Setor</th>
+                <th>Cargo</th>
+                <th>Salário</th>
+            </tr>
+            <tr>
+                <td>João</td>
+                <td>RH</td>
+                <td>Analista</td>
+                <td>R$ 4.500</td>
+            </tr>
+            <tr>
+                <td>Maria</td>
+                <td>RH</td>
+                <td>Coordenadora</td>
+                <td>R$ 6.000</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="product-container" class="product-container hidden">
+        <p>Nome do Produto: Smartphone X</p>
+        <p>Valor: R$ 2.500</p>
+    </div>
+
+    <div id="binary-container" class="binary-container hidden">
+        <input type="number" id="numero" placeholder="Digite um número">
+        <button onclick="converterParaBinario()">Converter para Binário</button>
+        <p id="resultado-binario"></p>
+    </div>
+
+    <script>
+        function login() {
+            const usuario = document.getElementById("usuario").value;
+            const setor = document.getElementById("setor").value;
+            const senha = document.getElementById("senha").value;
+            const mensagem = document.getElementById("mensagem");
+            const tableContainer = document.getElementById("table-container");
+            const productContainer = document.getElementById("product-container");
+            const binaryContainer = document.getElementById("binary-container");
+
+      
+            tableContainer.classList.add("hidden");
+            productContainer.classList.add("hidden");
+            binaryContainer.classList.add("hidden");
+
+            if (
+                (setor === "Comercial" && usuario === "CMCL12" && senha === "Com&c1@l") ||
+                (setor === "RH" && usuario === "98HR" && senha === "RH!@2025") ||
+                (setor === "TI" && usuario === "DEV4567TI" && senha === "IT&&||==2025")
+            ) {
+                mensagem.style.color = "#c02e80";
+                mensagem.textContent = `Login bem-sucedido! Bem-vindo ao setor ${setor}.`;
+
+                if (setor === "RH") {
+                    tableContainer.classList.remove("hidden");
+                } else if (setor === "Comercial") {
+                    productContainer.classList.remove("hidden");
+                } else if (setor === "TI") {
+                    binaryContainer.classList.remove("hidden");
+                }
+            } else {
+                mensagem.style.color = "red";
+                mensagem.textContent = "Usuário ou senha incorretos!";
+            }
+        }
+
+        function mostrarTabela() {
+            const tabela = document.getElementById("tabela");
+            tabela.classList.toggle("hidden");
+        }
+
+        function converterParaBinario() {
+            const numero = document.getElementById("numero").value;
+            const resultadoBinario = document.getElementById("resultado-binario");
+            resultadoBinario.textContent = `Binário: ${parseInt(numero, 10).toString(2)}`;
+        }
+    </script>
+</body>
+</html>
