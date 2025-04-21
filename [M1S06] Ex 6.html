@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Forca</title>
+  <style>
+    body {
+      background-color: #040955;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+    }
+
+    .login-container, .jogo-container {
+      display: none;
+      padding: 40px;
+    }
+
+    .login-container.active, .jogo-container.active {
+      display: block;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .erro {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container active">
+    <h1>Login - Jogo da Forca</h1>
+    <input type="text" id="nick" placeholder="Seu Nick" /><br />
+    <input type="text" id="usuario" placeholder="Usuário" /><br />
+    <input type="password" id="senha" placeholder="Senha" /><br />
+    <button onclick="fazerLogin()">Entrar</button>
+    <div class="erro" id="erro-msg"></div>
+  </div>
+
+  <div class="jogo-container">
+    <h1>Jogo da Forca - JMT V3</h1>
+    <h2>Digite uma letra e tente adivinhar a palavra!</h2>
+    <div class="letras-erradas-container"><h3>Letras erradas</h3></div>
+    <div class="palavra-secreta-container"></div>
+    <div class="popup-container" style="display: none">
+      <div class="popup">
+        <h2 id="mensagem"></h2>
+        <button onclick="reiniciarJogo()">Jogar novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const usuarios = [{ usuario: "admin", senha: "1234" }];
+
+    function fazerLogin() {
+      const nick = document.getElementById("nick").value;
+      const user = document.getElementById("usuario").value;
+      const pass = document.getElementById("senha").value;
+      const erro = document.getElementById("erro-msg");
+
+      const valido = usuarios.find((u) => u.usuario === user && u.senha === pass);
+
+      if (valido) {
+        if (nick.trim() === "") {
+          erro.innerText = "Por favor, insira um nick!";
+          return;
+        }
+
+        // Salvar o nick no Local Storage
+        localStorage.setItem("nick", nick);
+
+        document.querySelector(".login-container").classList.remove("active");
+        document.querySelector(".jogo-container").classList.add("active");
+        iniciarJogo();
+      } else {
+        erro.innerText = "Usuário ou senha incorretos!";
+      }
+    }
+
+    const tecnologias = [
+      "planejamento", "organizacao", "produtividade", "cronograma",
+      "disciplina", "foco", "metas", "objetivos", "concentracao",
+      "estrategia", "rotina", "calendario", "horario", "revisao",
+      "agenda", "priorizacao", "motivacao", "desempenho", "checklist",
+      "anotacoes", "dedicacao", "execucao", "progresso", "constancia",
+      "eficiencia", "persistencia", "autodisciplina"
+    ];
+
+    let palavraSecreta = "";
+    let letrasErradas = [];
+    let letrasCorretas = [];
+
+    function iniciarJogo() {
+      palavraSecreta = tecnologias[Math.floor(Math.random() * tecnologias.length)];
+      letrasErradas = [];
+      letrasCorretas = [];
+      atualizarJogo();
+    }
+
+    document.addEventListener("keydown", (evento) => {
+      if (!document.querySelector(".jogo-container").classList.contains("active")) return;
+      const letra = evento.key.toLowerCase();
+
+      // Permitir apenas letras de a-z sem acentos
+      if (!/^[a-z]$/.test(letra)) return;
+
+      if (letrasErradas.includes(letra) || letrasCorretas.includes(letra)) return;
+
+      if (palavraSecreta.includes(letra)) {
+        letrasCorretas.push(letra);
+      } else {
+        letrasErradas.push(letra);
+      }
+      atualizarJogo();
+    });
+
+    function atualizarJogo() {
+      const divErradas = document.querySelector(".letras-erradas-container");
+      divErradas.innerHTML = "<h3>Letras erradas</h3>" + letrasErradas.map(l => `<span>${l}</span>`).join("");
+
+      const container = document.querySelector(".palavra-secreta-container");
+      container.innerHTML = palavraSecreta
+        .split("")
+        .map(l => letrasCorretas.includes(l) ? `<span>${l}</span>` : `<span>_</span>`)
+        .join("");
+
+      // Verifica se o jogador perdeu ou ganhou
+      if (letrasErradas.length >= 6) mostrarFim("Fim de jogo! Você perdeu!");
+      if (palavraSecreta.split("").every(l => letrasCorretas.includes(l))) mostrarFim("Parabéns! Você ganhou!");
+    }
+
+    function mostrarFim(msg) {
+      const nick = localStorage.getItem("nick") || "Jogador";
+      document.querySelector("#mensagem").innerText = `${msg} ${nick}!`;
+      document.querySelector(".popup-container").style.display = "flex";
+    }
+
+    function reiniciarJogo() {
+      document.querySelector(".popup-container").style.display = "none";
+      iniciarJogo();
+    }
+  </script>
+</body>
+</html>
