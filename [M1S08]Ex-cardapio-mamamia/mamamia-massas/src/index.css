@@ -1,0 +1,125 @@
+:root {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #fff3e0;
+  background-color: #6b0715;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #6b0715, #a12f2f);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Estilo do título */
+h1 {
+  font-size: 3.5em;
+  color: #ffcc70;
+  text-shadow: 2px 2px 4px #5a030f;
+  text-decoration: solid 2px #ffcc70;
+  margin: 20px 0;
+}
+
+/* Tipografia do menu */
+nav {
+  background-color: #8b0a1c; 
+  text-align: center;
+  border-bottom: 4px solid #ffcc70;
+  margin-bottom: 40px;
+
+
+}
+
+nav h1 {
+  font-family: "Cinzel", serif;
+  font-size: 2.5em;
+  color: #ffcc70;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 12px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #fff3e0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+nav ul li:hover {
+  color: #ffcc70;
+  transform: scale(1.1);
+
+}
+
+/* Estilo da apresentação */
+.presentation-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px;
+}
+
+.presentation-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.presentation-text h2 {
+  font-size: 2.2em;
+  color: #ffcc70;
+}
+
+.presentation-text p {
+  font-size: 1.3em;
+  color: #fff3e0;
+}
+
+.presentation-image {
+  flex: 1;
+  min-width: 250px;
+}
+
+.presentation-image img {
+  width: 100%;
+  max-width: 500px; /* Limite para não ficar grande demais */
+  height: auto;
+  display: block; /* Evita espaços extras abaixo da imagem */
+  border-radius: 12px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .presentation-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul li  {
+    display: block;
+    margin: 8px 0;
+  }
+}

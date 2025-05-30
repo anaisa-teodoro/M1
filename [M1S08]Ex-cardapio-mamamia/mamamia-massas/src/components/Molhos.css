@@ -1,0 +1,24 @@
+.molhos-container {
+  background-color: #6b0715;
+  color: #ffcc70;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.molhos-container h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.molhos-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.molhos-container li {
+  font-size: 1.5em;
+  padding: 5px;
+  font-weight: bold;
+  color: #fff3e0;
+}
