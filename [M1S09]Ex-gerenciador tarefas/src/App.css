@@ -1,0 +1,76 @@
+body{
+    margin: 0; 
+    display: grid; 
+    background: linear-gradient(47deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+.descricao {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: white;
+    
+    
+}
+
+@media (min-width: 768px) {
+    .Container {
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        text-align: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    .Container {
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        text-align: center;
+    }
+}
+
+.NovaTarefa {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.nova-tarefa {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+}
+
+.Percentual {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.nova-tarefa input[type="text"],
+.nova-tarefa button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.nova-tarefa button {
+    background-color: #ac0f55;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nova-tarefa button:hover {
+    background-color: #a16a84;
+}
