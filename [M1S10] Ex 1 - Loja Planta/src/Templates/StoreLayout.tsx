@@ -9,16 +9,16 @@ interface StoreLayoutProps {
 export const StoreLayout = ({ children }: StoreLayoutProps) => (
   <div className={styles.container}>
     <header className={styles.header}>
-      <img src="./images/plantstore.png" alt="Plant Store Logo" className={styles.logo} />
+  <img src="./treelogo.jpg" alt="Planta Logo" className={styles.logo} />
       
-      <p className={styles.slogan}>Cultivando vida com paixão 🌿</p> 
+      <p className={styles.slogan}>Loja de plantas JOI</p> 
       <ThemeSwitcher />
     </header>
 
     <main className={styles.content}>{children}</main>
 
     <footer className={styles.footer}>
-      <p>© 2025 Plant Store - Cultivando Vida 🌱</p>
+      <p>Feito nas aulas do FuturoDEV Joinville v3</p>
     </footer>
   </div>
 );

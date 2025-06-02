@@ -12,12 +12,12 @@ interface Plant {
 
 
 const mockPlants: Plant[] = [
-  { id: "1", name: "Suculenta", price: 29.9, light: "sun", imageUrl: "https://th.bing.com/th/id/OIP.fdaDQXCaqKCD9ljm8BFC0AHaHp?rs=1&pid=ImgDetMain" },
-  { id: "2", name: "Samambaia", price: 39.9, light: "shade", imageUrl: "https://th.bing.com/th/id/OIP.rPrUpCiVOEv49fuWr5d0JAHaGN?rs=1&pid=ImgDetMain" },
-  { id: "3", name: "Orquídea", price: 49.9, light: "shade", imageUrl: "https://www.aarquiteta.com.br/blog/wp-content/uploads/2023/10/como-cuidar-de-orquideas-no-vaso-de-plastico03.jpg" },
-  { id: "4", name: "Jiboia", price: 34.9, light: "shade", imageUrl: "https://cdn.awsli.com.br/800x800/1965/1965650/produto/214168415/dsc02900-01-01-kf2i2anv0s.jpg" },
-  { id: "5", name: "Cactos", price: 24.9, light: "sun", imageUrl: "https://i.pinimg.com/originals/9b/52/b9/9b52b9b5365c468c6aec96bd22211cf4.jpg" },
-  { id: "6", name: "Lavanda", price: 44.9, light: "sun", imageUrl: "https://th.bing.com/th/id/OIP.bsggIXVO61Ez4lHRpJjeNwHaHa?rs=1&pid=ImgDetMain" },
+  { id: "1", name: "Suculenta", price: 19.9, light: "sun", imageUrl: "https://cdn.awsli.com.br/600x700/2429/2429322/produto/243925415/img_20241018_113008-tdwtu0bmzb.jpg" },
+  { id: "2", name: "Samambaia", price: 45.9, light: "shade", imageUrl: "https://bepage.com.br/wp-content/uploads/2024/10/samambaia-americana-imensa-e-saudavel.webp" },
+  { id: "3", name: "Orquídea", price: 39.9, light: "shade", imageUrl: "https://blog.polipet.com.br/wp-content/uploads/2023/11/Orquideas-445x445.jpeg" },
+  { id: "4", name: "Jiboia", price: 15.9, light: "shade", imageUrl: "https://images.tcdn.com.br/img/img_prod/350075/kit_de_plantio_jiboia_verde_com_vaso_de_fibra_de_coco_17806_1_a954dfa3340420378e67563f41277872.jpeg" },
+  { id: "5", name: "Cactos", price: 10.9, light: "sun", imageUrl: "https://static.wixstatic.com/media/ce80ca_1878f9c252c642d981bb8711c3de3ada~mv2.jpeg/v1/fill/w_568,h_758,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ce80ca_1878f9c252c642d981bb8711c3de3ada~mv2.jpeg" },
+  { id: "6", name: "Lavanda", price: 38.9, light: "sun", imageUrl: "https://bepage.com.br/wp-content/uploads/2024/09/Campo-de-Lavanda-5-1024x683.webp" },
 ]
 
 
